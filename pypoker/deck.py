@@ -1,3 +1,5 @@
+import random
+
 class Deck:
 
     tam = 52
@@ -11,11 +13,13 @@ class Deck:
 
             self.cards.append([])
             if i % cards_per_suit == 10:
-                self.cards[i].append("Jack")
+                self.cards[i].append("J")
             elif i % cards_per_suit == 11:
-                self.cards[i].append("Queen")
+                self.cards[i].append("Q")
             elif i % cards_per_suit == 12:
-                self.cards[i].append("King")
+                self.cards[i].append("K")
+            elif i % cards_per_suit == 0:
+                self.cards[i].append("A")
             else:
                 self.cards[i].append(str((i+1) % 13))
 
@@ -28,3 +32,8 @@ class Deck:
             else:
                 self.cards[i].append("Spades")
 
+    def get_card(self):
+        return self.cards.pop()
+
+    def suffle(self):
+        random.shuffle(self.cards)
